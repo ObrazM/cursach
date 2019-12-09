@@ -14,18 +14,20 @@ public class Scheduler {
         this.memorySheduler = new MemorySheduler();
         Configuration.memoryVolume = memoryVolume;
         init();
-        //clockGenerator = new ClockGenerator();
-       // clockGenerator.run();
+        clockGenerator = new ClockGenerator();
+        clockGenerator.run();
     }
 
     public void init(){
-        MemorySheduler.add(new MemoryBlock(0, 100));
-        MemorySheduler.add(new MemoryBlock(1000, 1100));
-        MemorySheduler.add(new MemoryBlock(500, 800));
-        MemorySheduler.fillMemoryBlock(100);
+       MemorySheduler.add(new MemoryBlock(Utils.getRandomInteger(1,500), Utils.getRandomInteger(501,1500)));
+        MemorySheduler.add(new MemoryBlock(Utils.getRandomInteger(0,300), Utils.getRandomInteger(400,900)));
+        MemorySheduler.add(new MemoryBlock(Utils.getRandomInteger(100,500), Utils.getRandomInteger(1000,1500)));
+        MemorySheduler.fillMemoryBlock(Utils.getRandomInteger(50, 500));
 
-        processQueue.add(3);
-        rejectsQueue.add(2);
+        processQueue.add(Utils.getRandomInteger(1, 5));
+        rejectsQueue.add(Utils.getRandomInteger(1,10));
+        System.out.println("Process Queue: "+processQueue);
+        System.out.println("Rejects Queue: "+rejectsQueue);
     }
 
     @Override
