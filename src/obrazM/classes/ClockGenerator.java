@@ -26,7 +26,9 @@ public class ClockGenerator extends TimerTask {
                 e.printStackTrace();
             }
             incTime();
+            Scheduler.init();
             System.out.println(time);
         }
     }
 }
+
